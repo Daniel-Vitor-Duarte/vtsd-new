@@ -10,9 +10,25 @@ const config: Config = {
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "gradient-suport":
+          "linear-gradient(180deg, #F8F7F7 73.75%, #FFF 95.78%)",
+          "gradient-suport-mobile":
+          "linear-gradient(180deg, #DBDADA 82.71%, #EBEBEB 100%)",
       },
+      screens: {
+        'sm': {'min': '300px', 'max': '1024px'},
+        'mm': {'min': '1025px', 'max': '1564px'},
+        'lg': '1565px'
+      },
+      keyframes:{
+        r:{
+          '0%': {transform: 'translateX(0%)'},
+          '100%': {transform: 'translateX(calc(1 * -120rem))'},
+        },
+    },
+    animation: {
+      r: 'r 25s linear infinite',
+    },
     },
   },
   plugins: [],

@@ -2,32 +2,70 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.hide {
+    animation: fadeOut 1s ease !important;
   }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  @keyframes fadeOut {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(800%);
+    }
   }
-}
+  
+  /* animação para fechar de cima para baixo */
+  
+  .top-to-bottom {
+    animation: topToBottomIn 1s ease;
+  }
+  @keyframes topToBottomIn {
+    0% {
+      transform: translateY(-800%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  .hide-top {
+    animation: topToBottomOut 1s ease !important;
+  }
+  @keyframes topToBottomOut {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(800%);
+    }
+  }
+  
+  /* animação para fechar de baixo para cima */
+  
+  .bottom-to-top {
+    animation: bottomToTopIn 1s ease;
+  }
+  
+  @keyframes bottomToTopIn {
+    0% {
+      transform: translateY(800%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  .hide-bottom {
+    animation: bottomToTopOut 1s ease !important;
+  }
+  @keyframes bottomToTopOut {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(800%);
+    }
+  }
+  
+ .youtube-vid{
+  border: none;
+ }
