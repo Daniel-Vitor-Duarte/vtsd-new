@@ -7,6 +7,7 @@ import OutrosM from "public/Images/Frame-outros-cursos-mobi.png"
 import Comments from "public/Images/frame-comments-appbumber.png"
 import CommentsM from "public/Images/frame-comments-appbumber-mobi.png"
 import Carousel from "../Carousel";
+import CarouselM from "../Carousel-Mobile";
 
 const testimonialData: Testimonial[] = [
     {
@@ -97,11 +98,11 @@ const Second: React.FC = () =>{
             <Image className="mt-[5.35rem] sm:hidden" src={Comments} alt=""/> 
             <Image className="mt-[3.12rem] sm:block hidden" src={CommentsM} alt=""/> 
         </section>
-        <section className="w-fit mx-auto mt-[3.94rem] ">
-            <h1 className="sm:w-[20rem] text-[1.875rem] sm:text-[1.125rem] sm:leading-7 text-center text-[#363636] font-bold ">
+        <section className="w-fit mx-auto mt-[3.94rem] sm:w-full sm:overflow-x-hidden">
+            <h1 className="sm:w-[20rem] sm:mx-auto text-[1.875rem] sm:text-[1.125rem] sm:leading-7 text-center text-[#363636] font-bold ">
             Veja alguns resultados dos alunos do VTSD
             </h1>
-            <Carousel testimonials={testimonialData} />
+              <Carousel testimonials={testimonialData} />
         </section>
         </main>
     )

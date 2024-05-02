@@ -56,8 +56,8 @@ export default function Carousel({ testimonials }: SliderProps) {
   }
 
   return (
-    <main className='max-w-[62.1875rem] mt-[1.63rem]'>
-      <div className=''>
+    <main className='w-[62.1875rem] mt-[1.63rem] overflow-x-hidden'>
+      <div className='sm:hidden'>
         <Slider ref={mainSliderRef} {...settings} className="w-full" lazyLoad='progressive'>
           {testimonials.map((testimonial, index) => (
             <div key={index} className=''>
@@ -85,7 +85,55 @@ export default function Carousel({ testimonials }: SliderProps) {
           ))}
         </Slider>
       </div>
-      <div className='flex justify-center items-center '>
+
+
+          {/* -------------------------/Mobile/----------------------------- */}
+      <div className='hidden sm:block'>
+          <div className="w-[60.1875rem] sm:w-full mx-auto mt-[1.5rem] sm:mt-0 gap-4 overflow-x-hidden ">
+            <Slider
+              ref={thumbSliderRef}
+              slidesToShow={3}
+              slidesToScroll={1}
+              infinite={true}
+              dots={false}
+              centerMode={false}
+              draggable={true}
+              speed={200}
+              focusOnSelect={true}
+            >
+              {testimonials.map((testimonial, index) => (
+                <div key={'thumbs_' + index} className='px-2 ml-6' >
+                  <React.Fragment>
+                    <ModalVideo
+                      channel="youtube"
+                      youtube={{ mute: 0, autoplay: 0 }}
+                      isOpen={isOpen}
+                      videoId={`${testimonial.embedId}`}
+                      onClose={() => setOpen(false)}
+                    />
+                    </React.Fragment>
+                    <div className='bg-[#F9F9F9] px-[2.3rem] py-[1.12rem] rounded-2xl h-[20.625rem]' onClick={() => handleClick(index)}>
+                      <h1 className='text-[#817E7E] text-[1.5rem] font-medium'>
+                        {testimonial.nome}
+                      </h1>
+                      <p className='text-[#817E7E] text-[0.875rem]'>
+                        Aluno VTSD
+                      </p>
+                      <img className='mt-4' src={`/images/${testimonial.thumb}`} alt={testimonial.nome} />
+                      <p className='text-[#817E7E] text-[0.875rem] mt-[1.31rem]'>
+                        {testimonial.resumo}
+                      </p>
+                    </div>
+                  
+                </div>
+              ))}
+            </Slider>
+          </div>
+        </div>
+
+
+                {/* -------------------------/Desktop/----------------------------- */}
+      <div className='flex justify-center items-center sm:hidden'>
         <button className='mr-2  h-fit rotate-180 sm:hidden' onClick={() => mainSliderRef.current?.slickPrev()}>
           <Image src={ArrowCircle} alt="" />
         </button>
@@ -103,7 +151,7 @@ export default function Carousel({ testimonials }: SliderProps) {
           >
             {testimonials.map((testimonial, index) => (
               <div key={'thumbs_' + index} className='px-2' onClick={() => handleClick(index)}>
-                <div className='bg-[#F9F9F9] px-[2.3rem] py-[1.12rem] rounded-2xl h-[20.625rem]'>
+                <div className='bg-[#F9F9F9] px-[2.3rem] py-[1.12rem] rounded-2xl h-[20.625rem] hover:cursor-pointer'>
                   <h1 className='text-[#817E7E] text-[1.5rem] font-medium'>
                   {testimonial.nome}
                   </h1>
