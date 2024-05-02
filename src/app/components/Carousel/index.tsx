@@ -5,16 +5,11 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import ModalVideo from 'react-modal-video';
+import { ModalVideoProps } from 'react-modal-video';
+import { Settings } from 'react-slick';
 
 
 
-interface Testimonial {
-  nome: string;
-  resumo: string;
-  thumb: string;
-  thumb2: string;
-  embedId: string;
-}
 
 
 interface SliderProps {
@@ -35,7 +30,7 @@ export default function Carousel({ testimonials }: SliderProps) {
     }
   }, [currentVideoIndex]);
 
-  const settings = {
+  const settings: Settings = {
     slidesToShow: 1,
     slidesToScroll: 1,
     infinite: true,
@@ -43,14 +38,15 @@ export default function Carousel({ testimonials }: SliderProps) {
     fade: true,
     autoplay: false,
     speed: 300,
-    lazyLoad: "ondemand",
-    asNavFor: thumbSliderRef.current,
+    lazyLoad: "progressive",
+    asNavFor: mainSliderRef.current || undefined,
     beforeChange: (currentSlide: number, nextSlide: number) => {
       setCurrentVideoIndex(nextSlide);
     }
   };
+  
 
-  const handleClick = (index) => {
+  const handleClick = (index: number) => {
     setCurrentVideoIndex(index)
     setOpen(true)
   }
@@ -72,15 +68,15 @@ export default function Carousel({ testimonials }: SliderProps) {
                 className='mx-auto rounded-[0.49981rem] sm:hidden'
               ></iframe>
               )}
-              <ModalVideo
-                width="560"
-                height="315"
+              {/* <ModalVideo
+                width={560}
+                height={315}
                 src={`${testimonial.embedId}`}
                 title={testimonial.nome}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 className='mx-auto rounded-[0.49981rem] sm:block hidden'
-              />
+              /> */}
             </div>
           ))}
         </Slider>
@@ -119,7 +115,7 @@ export default function Carousel({ testimonials }: SliderProps) {
                       <p className='text-[#817E7E] text-[0.875rem]'>
                         Aluno VTSD
                       </p>
-                      <img className='mt-4' src={`/images/${testimonial.thumb}`} alt={testimonial.nome} />
+                      <img className='mt-4' src={`/vtsd/lista-de-espera/images/${testimonial.thumb}`} alt={testimonial.nome} />
                       <p className='text-[#817E7E] text-[0.875rem] mt-[1.31rem]'>
                         {testimonial.resumo}
                       </p>
@@ -158,7 +154,7 @@ export default function Carousel({ testimonials }: SliderProps) {
                   <p className='text-[#817E7E] text-[0.875rem]'>
                   Aluno VTSD
                   </p>
-                  <img className='mt-4' src={`/images/${testimonial.thumb}`} alt={testimonial.nome} />
+                  <img className='mt-4' src={`/vtsd/lista-de-espera/images/${testimonial.thumb}`} alt={testimonial.nome} />
                   <p className='text-[#817E7E] text-[0.875rem] mt-[1.31rem]'>
                   {testimonial.resumo}
                   </p>

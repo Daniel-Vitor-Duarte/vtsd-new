@@ -7,7 +7,6 @@ import OutrosM from "public/Images/Frame-outros-cursos-mobi.png"
 import Comments from "public/Images/frame-comments-appbumber.png"
 import CommentsM from "public/Images/frame-comments-appbumber-mobi.png"
 import Carousel from "../Carousel";
-import CarouselM from "../Carousel-Mobile";
 
 const testimonialData: Testimonial[] = [
     {
