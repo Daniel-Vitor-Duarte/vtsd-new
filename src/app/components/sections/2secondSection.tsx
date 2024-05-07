@@ -8,6 +8,13 @@ import Comments from "public/Images/frame-comments-appbumber.png"
 import CommentsM from "public/Images/frame-comments-appbumber-mobi.png"
 import Carousel from "../Carousel";
 
+interface Testimonial {
+  name: string;
+  resumo: string;
+  date: Date;
+}
+
+
 const testimonialData: Testimonial[] = [
     {
         nome: "Igor Braga",
