@@ -19,7 +19,7 @@ const Second: React.FC = () => {
 
   return (
     <main className="bg-[#F2F2F2]">
-      <section className="flex sm:flex-col items-center sm:items-start justify-center gap-[5.31rem] sm:gap-[1.28rem] mt-[8rem] bg-[#363636] sm:bg-transparent py-10 overflow-x-hidden sm:border-y sm:border-y-white">
+      <section className="flex sm:flex-col items-center sm:items-start justify-center gap-[5.31rem] sm:gap-[1.28rem] mt-[8rem] bg-[#363636] sm:bg-transparent py-10 overflow-x-hidden sm:border-y sm:border-y-white ">
         <p className="max-w-[16rem] sm:text-center sm:min-w-full text-[1.39169rem] sm:text-[0.65106rem] font-semibold text-[#E9E9E9] sm:text-[#78787A] ">
           Grandes players do mercado que confiam
           no VTSD:
@@ -28,7 +28,7 @@ const Second: React.FC = () => {
         <Image src={Logos} alt="" />
         <Image src={Logos} alt="" />
         </div>
-        <div className="flex sm:hidden">
+        <div className="flex items-center sm:hidden gap-[5.31rem]">
           <Image src={Hot} alt="" />
           <Image src={Novo} alt="" />
           <Image src={Erico} alt="" />

@@ -61,25 +61,25 @@ const AccordionItem = ({ name, src }: ImageData) => {
           {/* Coluna 1 */}
           <div className="max-w-[18.6rem] flex justify-center items-center gap-2 flex-wrap">
             {images1.slice(0, isOpen ? images1.length : 2).map((image, index) => (
-              <Image className='rounded-2xl' key={index} src={`/vtsd/resultados/${image.src}`} alt={image.name} width={297.96} height={0} />
+              <Image className='rounded-2xl' key={index} src={`/vtsd/b/resultados/${image.src}`} alt={image.name} width={297.96} height={0} />
             ))}
           </div>
           {/* Coluna 2 */}
           <div className="max-w-[18.6rem] flex justify-center items-center gap-2 flex-wrap">
             {images2.slice(0, isOpen ? images2.length : 2).map((image, index) => (
-              <Image className='rounded-2xl' key={index} src={`/vtsd/resultados/${image.src}`} alt={image.name} width={297.96} height={0} />
+              <Image className='rounded-2xl' key={index} src={`/vtsd/b/resultados/${image.src}`} alt={image.name} width={297.96} height={0} />
             ))}
           </div>
           {/* Coluna 3 */}
           <div className="max-w-[18.6rem] flex justify-center items-center gap-2 flex-wrap">
             {images3.slice(0, isOpen ? images3.length : 2).map((image, index) => (
-              <Image className='rounded-2xl' key={index} src={`/vtsd/resultados/${image.src}`} alt={image.name} width={297.96} height={0} />
+              <Image className='rounded-2xl' key={index} src={`/vtsd/b/resultados/${image.src}`} alt={image.name} width={297.96} height={0} />
             ))}
           </div>
           {/* Coluna 4 */}
           <div className="max-w-[18.6rem] flex justify-center items-center gap-2 flex-wrap">
             {images4.slice(0, isOpen ? images4.length : 2).map((image, index) => (
-              <Image className='rounded-2xl' key={index} src={`/vtsd/resultados/${image.src}`} alt={image.name} width={297.96} height={0} />
+              <Image className='rounded-2xl' key={index} src={`/vtsd/b/resultados/${image.src}`} alt={image.name} width={297.96} height={0} />
             ))}
           </div>
         </div>
@@ -104,7 +104,7 @@ const AccordionItem = ({ name, src }: ImageData) => {
           {/* Coluna Mobile */}
           <div className=" flex justify-center items-center gap-2 flex-wrap">
             {imagesMobile.slice(0, isOpen ? imagesMobile.length : 3).map((image, index) => (
-              <Image className='rounded-2xl' key={index} src={`/vtsd/resultados/${image.src}`} alt={image.name} width={328.14} height={0} />
+              <Image className='rounded-2xl' key={index} src={`/vtsd/b/resultados/${image.src}`} alt={image.name} width={328.14} height={0} />
             ))}
           </div>
         </div>

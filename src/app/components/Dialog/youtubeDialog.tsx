@@ -108,7 +108,7 @@ function YoutubeDialog() {
         {depoimentos.map((depoimento, index) => (
           <div key={index} className={`carousel-item w-full sm:w-1/3 rounded-2xl cursor-pointer text-[#565656] transition-all duration-300 ${index === 1 ? 'active' : ''}`} onClick={() => openModal(depoimento.embedId)}>
             <div className="carousel-image-wrapper">
-              <Image className="carousel-image rounded-2xl min-h-[31.625rem]" src={`/vtsd/Images/${depoimento.thumb}`} alt={depoimento.nome} layout="responsive" width={664} height={490} style={{ objectFit: "cover" }} />
+              <Image className="carousel-image rounded-2xl min-h-[31.625rem]" src={`/vtsd/b/Images/${depoimento.thumb}`} alt={depoimento.nome} layout="responsive" width={664} height={490} style={{ objectFit: "cover" }} />
             </div>
             <div className={`carousel-text  max-w-[46.2rem] mx-auto mt-4 ${index === 1 ? 'active' : ''}`}>
               <div className='text-right'>

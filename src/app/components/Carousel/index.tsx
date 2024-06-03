@@ -122,43 +122,59 @@ const Carousel: React.FC = () => {
   const carouselItems: CarouselData[] = [
     {
       id: 1,
-      imageUrl: 'images/aluno-1.webp',
-      title: 'Giovana',
-      nicho: 'Nutricionista',
-      description: 'Já faturou mais de meio milhão de reais como VTSD.',
+      imageUrl: 'Images/aluno-1.webp',
+      title: 'João',
+      nicho: 'Aluno',
+      description: 'Graças ao VTSD eu vou me casar',
       embedId: 'LrSzIzgXSiA',
     },
     {
       id: 2,
-      imageUrl: 'images/aluno-2.webp',
-      title: 'Giovana',
-      nicho: 'Nutricionista',
-      description: 'Já faturou mais de meio milhão de reais como VTSD.',
+      imageUrl: 'Images/aluno-2.webp',
+      title: 'Luciano',
+      nicho: 'Coprodutor',
+      description: 'Ele era zerado no digital mas fez as primeiras vendas de um jeito simples',
       embedId: '-9F5S1MPWMk',
     },
     {
       id: 3,
-      imageUrl: 'images/aluno-3.webp',
-      title: 'Giovana',
-      nicho: 'Nutricionista',
-      description: 'Já faturou mais de meio milhão de reais como VTSD.',
+      imageUrl: 'Images/aluno-3.webp',
+      title: 'Marcelo',
+      nicho: 'Músico',
+      description: 'Depois de dois ou três dias começou a vender',
       embedId: '9NMtJDUPFbY',
     },
     {
       id: 4,
-      imageUrl: 'images/aluna-4.webp',
-      title: 'Giovana',
+      imageUrl: 'Images/aluna-4.webp',
+      title: 'Aluna',
       nicho: 'Nutricionista',
-      description: 'Já faturou mais de meio milhão de reais como VTSD.',
+      description: 'Elas faturam 10 mil reais todo mês sem anunciar',
       embedId: '19lZawTB6dc',
     },
     {
       id: 5,
-      imageUrl: 'images/aluna-5.webp',
-      title: 'Giovana',
-      nicho: 'Nutricionista',
-      description: 'Já faturou mais de meio milhão de reais como VTSD.',
+      imageUrl: 'Images/aluna-5.webp',
+      title: 'Yasmin',
+      nicho: 'Gestora de Empresas ',
+      description: 'É possível fazer uma venda por dia com leveza e sem bagunça',
       embedId: 'qE3SIAkxkuU',
+    },
+    {
+      id: 6,
+      imageUrl: 'Images/aluna-6.webp',
+      title: 'Igor',
+      nicho: 'Aluno ',
+      description: 'Eu nunca tinha comprado nada à vista antes do VTSD',
+      embedId: 'f6gMSdQaFkk',
+    },
+    {
+      id: 7,
+      imageUrl: 'Images/aluna-7.webp',
+      title: 'Giovanna ',
+      nicho: 'Nutricionista',
+      description: 'Meu primeiro faturamento foi de 8 mil reais',
+      embedId: 'Dv6dxLh2mYE',
     },
   ];
 
@@ -176,7 +192,7 @@ const Carousel: React.FC = () => {
             <img
               src={item.imageUrl}
               alt={item.title}
-              className={`w-full h-[16.5625rem]  object-cover rounded-2xl transition-filter duration-500 ${
+              className={`w-full h-[16.5625rem]  object-cover rounded-2xl transition-filter duration-500 cursor-pointer ${
                 index !== currentSlide ? 'filter grayscale' : ''
               }`}
             />
@@ -184,9 +200,9 @@ const Carousel: React.FC = () => {
               <div className="flex items-end justify-center mt-4 gap-[1.62rem]">
                 <div>
                   <p className="text-[1.36444rem] font-bold">{item.title}</p>
-                  <p className="text-[0.81869rem] ">{item.nicho}</p>
+                  <p className="text-[0.81869rem] max-w-[5.5rem]">{item.nicho}</p>
                 </div>
-                <p className="text-sm text-gray-600">{item.description}</p>
+                <p className="text-sm text-gray-600 max-w-[13.64rem]">{item.description}</p>
               </div>
             )}
           </div>
