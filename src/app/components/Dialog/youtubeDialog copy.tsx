@@ -127,7 +127,7 @@ const Carousel: React.FC = () => {
           Após entrar para o VTSD o crescimento foi impressionante. Renato já faturou mais de 1 MILHÃO DE REAIS em seu primeiro ano. No vídeo ele explica com detalhes como foi o processo e como as vendas começaram a acontecer.
         </>
       ),
-      thumb: "images/renato-asseM.webp",
+      thumb: "Images/renato-asseM.webp",
       embedId: "QaTemJjmsd4",
     },
     {
@@ -138,7 +138,7 @@ const Carousel: React.FC = () => {
           Em três meses faturamos mais de 100 MIL REAIS e até o momento quase 300 MIL REAIS.” Amanda ganhava R$500 por mês e saiu do interior do Piauí para tentar a vida em SP, junto com o namorado.
         </>
       ),
-      thumb: "images/joao-e-amandaM.webp",
+      thumb: "Images/joao-e-amandaM.webp",
       embedId: "4jHmCFLgbqM",
     },
     {
@@ -153,7 +153,7 @@ const Carousel: React.FC = () => {
           Arthur demorou entrar para o VTSD porque a esposa não ia com a cara do Ladeira. E esse não foi o primeiro relato desse tipo. A realidade é que o Ladeira não é o cara mais apessoado do mundo e você pode até não gostar das piadas ruins ou daquele cabelo bagunçado, mas não há como negar os resultados incríveis que ele tem proporcionado aos alunos. É realmente incontestável.
         </>
       ),
-      thumb: "images/arthur-moraisM.webp",
+      thumb: "Images/arthur-moraisM.webp",
       embedId: "2vH_2TjG6S8",
     },
   ];
