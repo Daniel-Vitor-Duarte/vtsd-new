@@ -23,11 +23,11 @@ const config: Config = {
       keyframes:{
         r:{
           '0%': {transform: 'translateX(0%)'},
-          '100%': {transform: 'translateX(calc(1 * -120rem))'},
+          '100%': {transform: 'translateX(-58.6rem)'},
         },
     },
     animation: {
-      r: 'r 25s linear infinite',
+      r: 'r 15s linear infinite',
     },
     },
   },

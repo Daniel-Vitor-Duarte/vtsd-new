@@ -85,3 +85,125 @@
   height: 19.73156rem;
   background: linear-gradient(0deg, #F6F6F6 0%, rgba(245, 245, 245, 0.00) 100%);
 }
+
+.bg-gradiente-result {
+  background: linear-gradient(0deg, #F2F2F2 35.04%, rgba(243, 243, 243, 0.81) 66.28%, rgba(248, 248, 248, 0.00) 100%);
+}
+
+.shadow-hotmart {
+  box-shadow: -30.926px 7.981px 24.941px 2.993px rgba(0, 0, 0, 0.15);
+}
+
+.padding-zero {
+  padding: 4.38rem 3.12rem 3.12rem 4.12rem;
+}
+
+@media (max-width: 1024px){
+  .padding-zero {
+    padding: 4.38rem .69rem 2.94rem 1.69rem;
+  }
+}
+
+.gray-filter {
+  filter: grayscale(100%);
+}
+
+.isActive div {
+  animation: load-carousel 10s linear;
+}
+
+@keyframes load-carousel {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+.nivelOne {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.10) 100%), #FFF;
+}
+
+.nivelTwo {
+  border-radius: 0.98994rem 0.98994rem 0rem 0rem;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.20) 100%), #FF569D;
+}
+
+
+.nivelThree {
+  border-radius: 0.98994rem 0.98994rem 0rem 0rem;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.50) 100%), #4D4D4D;
+}
+
+.nivelFour {
+  border-radius: 0.98994rem 0.98994rem 0rem 0rem;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.20) 100%), #CE42FF;
+}
+
+
+.shadowOne {
+  box-shadow: 0px 4px 62.7px 0px rgba(151, 151, 151, 0.25);
+}
+
+/* estilo Resultados incontestáveis */
+
+.carousel-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-item {
+  flex: 1;
+  min-width: 20%;
+  transition: width 0.3s ease-in-out;
+  position: relative;
+}
+
+.carousel-item:hover {
+  flex: 1 1 calc(20% + 25rem);
+}
+
+.carousel-item.active {
+  flex: 3;
+}
+
+.carousel-image-wrapper {
+  overflow: hidden;
+}
+
+.carousel-image {
+  width: 100%;
+  height: auto;
+  transition: width 0.3s ease-in-out;
+}
+
+.carousel-item:hover .carousel-image,
+.carousel-item.active .carousel-image {
+  width: 100%;
+}
+
+.carousel-item:not(:hover) .carousel-image {
+  width: 80%; /* Adjust this percentage as needed */
+}
+
+.carousel-text {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.carousel-item:hover .carousel-text,
+.carousel-item.active .carousel-text {
+  display: flex;
+  opacity: 1;
+  justify-content: center;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.carousel-container:hover .carousel-item.active:not(:hover) .carousel-text {
+  display: none;
+  opacity: 0;
+}

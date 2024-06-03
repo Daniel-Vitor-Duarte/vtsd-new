@@ -1,172 +1,204 @@
-import React, { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
-import ArrowCircle from 'public/Icons/arrow-right-circle.png';
+import React, { useRef, useState, useEffect } from 'react';
 import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick.css'; 
 import 'slick-carousel/slick/slick-theme.css';
-import ModalVideo from 'react-modal-video';
-import { ModalVideoProps } from 'react-modal-video';
-import { Settings } from 'react-slick';
+import Dialog from '@/app/components/Dialog/index'; // Make sure to import your Dialog component
 
-
-
-
-
-interface SliderProps {
-  testimonials: Testimonial[];
+// Define an interface for the carousel data
+interface CarouselData {
+  id: number;
+  imageUrl: string;
+  title: string;
+  nicho: string;
+  description: string;
+  embedId: string;
 }
 
-export default function Carousel({ testimonials }: SliderProps) {
-  const [currentVideoIndex, setCurrentVideoIndex] = useState(1);
-  const mainSliderRef = useRef<Slider>(null);
-  const thumbSliderRef = useRef<Slider>(null);
+// Custom Previous Arrow Component
+const PrevArrow = ({ onClick }: { onClick: () => void }) => {
+  return (
+    <div className="custom-arrow prev-arrow mx-2" onClick={onClick}>
+      <img src="Icons/arrow-left.svg" alt="Previous" />
+    </div>
+  );
+};
 
-  const [isOpen, setOpen] = useState(false);
+// Custom Next Arrow Component
+const NextArrow = ({ onClick }: { onClick: () => void }) => {
+  return (
+    <div className="custom-arrow next-arrow mx-2 rotate-180" onClick={onClick}>
+      <img src="Icons/arrow-left.svg" alt="Next" />
+    </div>
+  );
+};
 
+const Carousel: React.FC = () => {
+  const [currentSlide, setCurrentSlide] = useState(2); // Start from the third item
+  const sliderRef = useRef<Slider>(null);
 
-  useEffect(() => {
-    if (mainSliderRef.current && thumbSliderRef.current) {
-      mainSliderRef.current.slickGoTo(currentVideoIndex);
-    }
-  }, [currentVideoIndex]);
+  const refDialog = useRef<HTMLDialogElement>(null);
+  const [activeEmbedId, setActiveEmbedId] = useState('');
 
-  const settings: Settings = {
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    infinite: true,
-    arrows: true,
-    fade: true,
-    autoplay: false,
-    speed: 300,
-    lazyLoad: "progressive",
-    asNavFor: mainSliderRef.current || undefined,
-    beforeChange: (currentSlide: number, nextSlide: number) => {
-      setCurrentVideoIndex(nextSlide);
+  const openModal = (embedId: string) => {
+    document.body.style.overflow = 'hidden';
+    setActiveEmbedId(embedId);
+    refDialog.current?.showModal();
+  };
+
+  const closeModal = (animation: string) => {
+    document.body.style.overflow = '';
+    document.body.style.overflowX = "";
+    if (refDialog.current) {
+      refDialog.current.classList.add(animation);
+      refDialog.current.addEventListener(
+        "webkitAnimationEnd",
+        function animationEnd() {
+          refDialog.current?.classList.remove(animation);
+          refDialog.current?.close();
+          refDialog.current?.removeEventListener(
+            "webkitAnimationEnd",
+            animationEnd,
+            false
+          );
+        }
+      );
     }
   };
-  
 
-  const handleClick = (index: number) => {
-    setCurrentVideoIndex(index)
-    setOpen(true)
-  }
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const rect = refDialog.current?.getBoundingClientRect();
+      if (rect) {
+        if (
+          rect.left > event.clientX ||
+          rect.right < event.clientX ||
+          rect.top > event.clientY ||
+          rect.bottom < event.clientY
+        ) {
+          closeModal("hide-bottom");
+        }
+      }
+    };
+
+    refDialog.current?.addEventListener("click", handleClickOutside);
+
+    return () => {
+      refDialog.current?.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
+  const settings = {
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    initialSlide: 2,
+    centerMode: true,
+    centerPadding: '0px',
+    focusOnSelect: true,
+    cssEase: 'linear',
+    beforeChange: (current: number, next: number) => setCurrentSlide(next),
+    arrows: false, // Disable default arrows
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          centerMode: true,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          centerMode: true,
+        },
+      },
+    ],
+  };
+
+  const carouselItems: CarouselData[] = [
+    {
+      id: 1,
+      imageUrl: 'images/aluno-1.webp',
+      title: 'Giovana',
+      nicho: 'Nutricionista',
+      description: 'Já faturou mais de meio milhão de reais como VTSD.',
+      embedId: 'LrSzIzgXSiA',
+    },
+    {
+      id: 2,
+      imageUrl: 'images/aluno-2.webp',
+      title: 'Giovana',
+      nicho: 'Nutricionista',
+      description: 'Já faturou mais de meio milhão de reais como VTSD.',
+      embedId: '-9F5S1MPWMk',
+    },
+    {
+      id: 3,
+      imageUrl: 'images/aluno-3.webp',
+      title: 'Giovana',
+      nicho: 'Nutricionista',
+      description: 'Já faturou mais de meio milhão de reais como VTSD.',
+      embedId: '9NMtJDUPFbY',
+    },
+    {
+      id: 4,
+      imageUrl: 'images/aluna-4.webp',
+      title: 'Giovana',
+      nicho: 'Nutricionista',
+      description: 'Já faturou mais de meio milhão de reais como VTSD.',
+      embedId: '19lZawTB6dc',
+    },
+    {
+      id: 5,
+      imageUrl: 'images/aluna-5.webp',
+      title: 'Giovana',
+      nicho: 'Nutricionista',
+      description: 'Já faturou mais de meio milhão de reais como VTSD.',
+      embedId: 'qE3SIAkxkuU',
+    },
+  ];
 
   return (
-    <main className='w-[62.1875rem] mt-[1.63rem] overflow-x-hidden'>
-      <div className='sm:hidden'>
-        <Slider ref={mainSliderRef} {...settings} className="w-full" lazyLoad='progressive'>
-          {testimonials.map((testimonial, index) => (
-            <div key={index} className=''>
-              {currentVideoIndex === index && (
-              <iframe
-                width="560"
-                height="315"
-                src={`https://www.youtube.com/embed/${testimonial.embedId}`}
-                title={testimonial.nome}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className='mx-auto rounded-[0.49981rem] sm:hidden'
-              ></iframe>
-              )}
-              {/* <ModalVideo
-                width={560}
-                height={315}
-                src={`${testimonial.embedId}`}
-                title={testimonial.nome}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className='mx-auto rounded-[0.49981rem] sm:block hidden'
-              /> */}
-            </div>
-          ))}
-        </Slider>
-      </div>
-
-
-          {/* -------------------------/Mobile/----------------------------- */}
-      <div className='hidden sm:block'>
-          <div className="w-[60.1875rem] sm:w-full mx-auto mt-[1.5rem] sm:mt-0 gap-4 overflow-x-hidden ">
-            <Slider
-              ref={thumbSliderRef}
-              slidesToShow={3}
-              slidesToScroll={1}
-              infinite={true}
-              dots={false}
-              centerMode={false}
-              draggable={true}
-              speed={200}
-              focusOnSelect={true}
-            >
-              {testimonials.map((testimonial, index) => (
-                <div key={'thumbs_' + index} className='px-2 ml-6' >
-                  <React.Fragment>
-                    <ModalVideo
-                      channel="youtube"
-                      youtube={{ mute: 0, autoplay: 0 }}
-                      isOpen={isOpen}
-                      videoId={`${testimonial.embedId}`}
-                      onClose={() => setOpen(false)}
-                    />
-                    </React.Fragment>
-                    <div className='bg-[#F9F9F9] px-[2.3rem] py-[1.12rem] rounded-2xl h-[20.625rem]' onClick={() => handleClick(index)}>
-                      <h1 className='text-[#817E7E] text-[1.5rem] font-medium'>
-                        {testimonial.nome}
-                      </h1>
-                      <p className='text-[#817E7E] text-[0.875rem]'>
-                        Aluno VTSD
-                      </p>
-                      <img className='mt-4' src={`/vtsd/lista-de-espera/images/${testimonial.thumb}`} alt={testimonial.nome} />
-                      <p className='text-[#817E7E] text-[0.875rem] mt-[1.31rem]'>
-                        {testimonial.resumo}
-                      </p>
-                    </div>
-                  
-                </div>
-              ))}
-            </Slider>
-          </div>
-        </div>
-
-
-                {/* -------------------------/Desktop/----------------------------- */}
-      <div className='flex justify-center items-center sm:hidden'>
-        <button className='mr-2  h-fit rotate-180 sm:hidden' onClick={() => mainSliderRef.current?.slickPrev()}>
-          <Image src={ArrowCircle} alt="" />
-        </button>
-        <div className="w-[60.1875rem] sm:w-full mx-auto mt-[1.5rem] sm:mt-0 gap-4 overflow-x-hidden ">
-          <Slider
-            ref={thumbSliderRef}
-            slidesToShow={3}
-            slidesToScroll={1}
-            infinite={true}
-            dots={false}
-            centerMode={false}
-            draggable={true}
-            speed={200}
-            focusOnSelect={true}
+    <div className="w-full relative mt-12 sm:mt-[1.25rem]">
+      <Slider ref={sliderRef} {...settings}>
+        {carouselItems.map((item, index) => (
+          <div
+            key={item.id}
+            className={`p-4 transform transition-transform duration-500 ${
+              index === currentSlide ? 'scale-110' : 'scale-90'
+            }`}
+            onClick={() => index === currentSlide && openModal(item.embedId)} // Open modal on click
           >
-            {testimonials.map((testimonial, index) => (
-              <div key={'thumbs_' + index} className='px-2' onClick={() => handleClick(index)}>
-                <div className='bg-[#F9F9F9] px-[2.3rem] py-[1.12rem] rounded-2xl h-[20.625rem] hover:cursor-pointer'>
-                  <h1 className='text-[#817E7E] text-[1.5rem] font-medium'>
-                  {testimonial.nome}
-                  </h1>
-                  <p className='text-[#817E7E] text-[0.875rem]'>
-                  Aluno VTSD
-                  </p>
-                  <img className='mt-4' src={`/vtsd/lista-de-espera/images/${testimonial.thumb}`} alt={testimonial.nome} />
-                  <p className='text-[#817E7E] text-[0.875rem] mt-[1.31rem]'>
-                  {testimonial.resumo}
-                  </p>
+            <img
+              src={item.imageUrl}
+              alt={item.title}
+              className={`w-full h-[16.5625rem]  object-cover rounded-2xl transition-filter duration-500 ${
+                index !== currentSlide ? 'filter grayscale' : ''
+              }`}
+            />
+            {index === currentSlide && (
+              <div className="flex items-end justify-center mt-4 gap-[1.62rem]">
+                <div>
+                  <p className="text-[1.36444rem] font-bold">{item.title}</p>
+                  <p className="text-[0.81869rem] ">{item.nicho}</p>
                 </div>
+                <p className="text-sm text-gray-600">{item.description}</p>
               </div>
-            ))}
-          </Slider>
-        </div>
-        <button className='mr-2 h-fit  sm:hidden' onClick={() => mainSliderRef.current?.slickNext()}>
-          <Image src={ArrowCircle} alt="" />
-        </button>
+            )}
+          </div>
+        ))}
+      </Slider>
+      <div className="flex w-[30.8rem] justify-between absolute -mt-[2.4rem] ml-[23.2rem]">
+        <PrevArrow onClick={() => sliderRef.current?.slickPrev()} />
+        <NextArrow onClick={() => sliderRef.current?.slickNext()} />
       </div>
-    </main>
+      <Dialog ref={refDialog} activeEmbedId={activeEmbedId} transitions="top-to-bottom" />
+    </div>
   );
-}
+};
+
+export default Carousel;

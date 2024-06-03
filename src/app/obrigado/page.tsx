@@ -38,7 +38,7 @@ export default function Obrigado() {
                         <Image src={Procure} alt="" />
                         <p className="max-w-[39.3125rem] sm:max-w-[16rem]">
                             <span className="font-semibold text-[#363636]">Procure em outras pastas:</span> <br /> {" "}
-                            Se não encontrar nosso e-mail na caixa de entrada, cheque na aba {" "} <strong>"Promoções"</strong> ou na caixa de {" "} <strong>"SPAM"</strong>. Se o e-mail estiver lá, mova-o para a caixa de entrada principal para garantir que você receberá nossas futuras mensagens.
+                            Se não encontrar nosso e-mail na caixa de entrada, cheque na aba {" "} <strong>&quot;Promoções&quot;</strong> ou na caixa de {" "} <strong>&quot;SPAM&quot;</strong>. Se o e-mail estiver lá, mova-o para a caixa de entrada principal para garantir que você receberá nossas futuras mensagens.
                         </p>
                     </div>
                 </div>

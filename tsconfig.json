@@ -22,6 +22,6 @@
       "public/*": ["./public/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/components/accordion/accordion.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/components/accordion/accordion.tsx", "src/app/components/AcordionResults/index.tsx", "src/app/components/sections/test.tsx"],
   "exclude": ["node_modules"]
 }
